@@ -64,5 +64,5 @@ const runs=documents.filter(d=>d.group==='news').map(d=>{
 export const latestRun=runs[0]||null;
 export function dateLabel(date){return new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Seoul'}).format(new Date(date));}
 export const workSlugs={'사이코메트리 그녀석':'he-is-psychometric','보건교사 안은영':'the-school-nurse-files','스위트홈':'sweethome','스위트홈 2':'sweethome-2','로스쿨':'law-school','환혼':'alchemy-of-souls','환혼 빛과 그림자':'alchemy-of-souls-light-and-shadow','헌트':'hunt','무빙':'moving','이재, 곧 죽습니다':'deaths-game','조명가게':'light-shop','언젠가는 슬기로울 전공의생활':'resident-playbook','이 사랑 통역 되나요?':'can-this-love-be-translated','모두가 자신의 무가치함과 싸우고 있다':'everyone-fights-worthlessness'};
-export const workUrl=w=>byFile.get('pages/works/'+workSlugs[w.title]+'.md')?.url||BASE+'wiki/pages/filmography/';
+export const workUrl=w=>documents.find(d=>d.file.startsWith('pages/works/')&&d.title===w.title)?.url||byFile.get('pages/works/'+workSlugs[w.title]+'.md')?.url||BASE+'wiki/pages/filmography/';
 export const searchData=documents.map(d=>({title:d.title,url:d.url,group:d.group,text:d.markdown.replace(/<!--[\s\S]*?-->/g,'').replace(/https?:\/\/\S+/g,'').slice(0,45000)}));
