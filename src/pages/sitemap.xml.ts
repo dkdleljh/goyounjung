@@ -1,0 +1,2 @@
+import {BASE,documents} from '../lib/wiki.mjs';
+export function GET(){const urls=[BASE,...['works/','archive/','search/'].map(p=>BASE+p),...documents.map(d=>d.url)];return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(url=>`<url><loc>https://dkdleljh.github.io${url}</loc></url>`).join('')+'</urlset>',{headers:{'Content-Type':'application/xml'}});}

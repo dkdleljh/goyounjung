@@ -1,0 +1,2 @@
+export const normalize=value=>String(value).normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g,' ').trim();
+export function findResults(data,query){const terms=normalize(query).split(' ').filter(Boolean);if(!terms.length)return [];return data.map(item=>({...item,score:terms.reduce((n,t)=>n+(normalize(item.title).includes(t)?10:0),0)})).filter(item=>terms.every(t=>normalize(item.title+' '+item.text).includes(t))).sort((a,b)=>b.score-a.score);}
