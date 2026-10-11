@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {Marked} from 'marked';
@@ -9,6 +10,8 @@ export const REPO='https://github.com/dkdleljh/goyoonjung-wiki';
 export const root=path.resolve(process.env.WIKI_DIR || '.wiki');
 const git=(...args)=>execFileSync('git',['-C',root,...args],{encoding:'utf8'}).trim();
 export const revision=git('rev-parse','HEAD');
+export const siteRevision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+export const sha256=value=>createHash('sha256').update(value).digest('hex');
 export const sourceDate=git('show','-s','--format=%cI','HEAD');
 export const builtAt=new Date().toISOString();
 export const profile=JSON.parse(fs.readFileSync(path.join(root,'data/facts/profile.json'),'utf8'));
@@ -26,13 +29,14 @@ function category(file){
  if(/^(profile|timeline|awards\.md|people\/|notes\/)/.test(s))return 'profile';
  return 'sources';
 }
-function walk(dir){return fs.readdirSync(path.join(root,dir),{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(`${dir}/${e.name}`):[`${dir}/${e.name}`]);}
-const files=['pages','sources','news'].flatMap(walk).filter(f=>f.endsWith('.md')&&!/\/(templates|checklists)\//.test(f));
+const files=git('ls-files','-z').split('\0').filter(f=>/^(pages|sources|news)\//.test(f)&&f.endsWith('.md')&&!/\/(templates|checklists)\//.test(f)).sort();
+export const sourceFiles=[...files,'data/facts/profile.json','data/facts/works.json'].sort().map(file=>({file,sha256:sha256(fs.readFileSync(path.join(root,file)))}));
+if(process.env.CI && git('status','--porcelain','--',...sourceFiles.map(f=>f.file)))throw new Error('Wiki build inputs must match the checked-out commit');
 export const documents=files.map(file=>{
  const markdown=fs.readFileSync(path.join(root,file),'utf8');
  const title=(markdown.match(/^#\s+(.+)$/m)?.[1]||path.basename(file,'.md')).replace(/^[^\p{L}\p{N}]+/u,'').trim();
  const slug=file.replace(/\.md$/,'');
- return {file,slug,title,group:category(file),markdown,url:BASE+'wiki/'+slug+'/',source:REPO+'/blob/'+revision+'/'+file};
+ return {file,slug,title,group:category(file),markdown,sourceHash:sha256(markdown),url:BASE+'wiki/'+slug+'/',source:REPO+'/blob/'+revision+'/'+file};
 });
 const byFile=new Map(documents.map(d=>[d.file,d]));
 export function rewriteLink(href,file){
@@ -65,4 +69,4 @@ export const latestRun=runs[0]||null;
 export function dateLabel(date){return new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Seoul'}).format(new Date(date));}
 export const workSlugs={'사이코메트리 그녀석':'he-is-psychometric','보건교사 안은영':'the-school-nurse-files','스위트홈':'sweethome','스위트홈 2':'sweethome-2','로스쿨':'law-school','환혼':'alchemy-of-souls','환혼 빛과 그림자':'alchemy-of-souls-light-and-shadow','헌트':'hunt','무빙':'moving','이재, 곧 죽습니다':'deaths-game','조명가게':'light-shop','언젠가는 슬기로울 전공의생활':'resident-playbook','이 사랑 통역 되나요?':'can-this-love-be-translated','모두가 자신의 무가치함과 싸우고 있다':'everyone-fights-worthlessness'};
 export const workUrl=w=>documents.find(d=>d.file.startsWith('pages/works/')&&d.title===w.title)?.url||byFile.get('pages/works/'+workSlugs[w.title]+'.md')?.url||BASE+'wiki/pages/filmography/';
-export const searchData=documents.map(d=>({title:d.title,url:d.url,group:d.group,text:d.markdown.replace(/<!--[\s\S]*?-->/g,'').replace(/https?:\/\/\S+/g,'').slice(0,45000)}));
+export const searchData=documents.map(d=>({title:d.title,url:d.url,group:d.group,text:d.markdown.replace(/<!--[\s\S]*?-->/g,'').replace(/https?:\/\/\S+/g,'')}));
