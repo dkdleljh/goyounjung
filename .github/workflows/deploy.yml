@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 15
     outputs:
       changed: ${{ steps.revision.outputs.changed }}
+      wiki_revision: ${{ steps.revision.outputs.wiki_revision }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/checkout@v6
@@ -39,6 +40,7 @@ jobs:
               print('Rebuild required:', type(exc).__name__)
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write(f'changed={str(changed).lower()}\n')
+              output.write(f"wiki_revision={git('-C', '.wiki', 'rev-parse', 'HEAD')}\n")
           PYCODE
       - uses: actions/setup-node@v6
         if: steps.revision.outputs.changed == 'true'
@@ -77,8 +79,13 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: dkdleljh/goyoonjung-wiki
-          ref: main
+          ref: ${{ needs.build.outputs.wiki_revision }}
           path: .wiki
           persist-credentials: false
-      - name: Verify published source and every deployed artifact
-        run: python3 .wiki/scripts/verify_website_sync.py --wait 900 --artifact-urls
+      - name: Verify the built snapshot and every deployed artifact
+        env:
+          WIKI_REVISION: ${{ needs.build.outputs.wiki_revision }}
+          SITE_REVISION: ${{ github.sha }}
+        run: >-
+          python3 .wiki/scripts/verify_website_sync.py --wait 900 --artifact-urls
+          --wiki-revision "$WIKI_REVISION" --site-revision "$SITE_REVISION"
