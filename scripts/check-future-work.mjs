@@ -13,6 +13,7 @@ try{
  fs.writeFileSync(target,JSON.stringify(works));
  fs.writeFileSync(path.join(fixture,'pages/works/future-fixture.md'),'# 사진 없는 새 작품 검증\n\n출연 확정, 대표 사진 준비 중.\n');
  execFileSync('git',['-C',fixture,'add','data/facts/works.json','pages/works/future-fixture.md']);
+ execFileSync('git',['-C',fixture,'-c','core.hooksPath=/dev/null','-c','user.name=Fixture test','-c','user.email=fixture@example.invalid','commit','-m','Add unillustrated future work fixture'],{stdio:'pipe'});
  execFileSync('npm',['run','build'],{env:{...process.env,WIKI_DIR:fixture},stdio:'pipe',timeout:180000});
  const html=fs.readFileSync('dist/works/index.html','utf8');
  assert.ok(html.includes('사진 없는 새 작품 검증')&&html.includes('대표 사진 준비 중'));
