@@ -4,7 +4,7 @@
     "title": "2025년 1월 26일 · 인천공항 출국",
     "alt": "인천공항에서 손으로 하트 모양을 만드는 고윤정",
     "author": "티비텐",
-    "authorUrl": "https://www.youtube.com/@_TV10",
+    "authorUrl": "https://www.youtube.com/watch?v=yP0pZUyn0zc",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
     "origin": "https://www.youtube.com/watch?v=yP0pZUyn0zc",
@@ -106,7 +106,7 @@
     "title": "2026년 · 이 사랑 통역 되나요? 제작발표회",
     "alt": "이 사랑 통역 되나요? 제작발표회에서 나란히 앉은 고윤정과 김선호",
     "author": "티비텐 (@_TV10)",
-    "authorUrl": "https://www.youtube.com/@_TV10",
+    "authorUrl": "https://www.youtube.com/shorts/-lXodlhAXzo",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "origin": "https://www.youtube.com/shorts/-lXodlhAXzo",
@@ -137,7 +137,8 @@
       }
     ],
     "workTitle": "이 사랑 통역 되나요?",
-    "kind": "제작발표회 사진"
+    "kind": "제작발표회 사진",
+    "workId": "work-이-사랑-통역-되나요"
   },
   {
     "id": "interview",
@@ -205,7 +206,8 @@
         "height": 655,
         "bytes": 20266
       }
-    ]
+    ],
+    "workId": "work-사이코메트리-그녀석"
   },
   {
     "id": "work-law-school",
@@ -237,7 +239,8 @@
         "height": 360,
         "bytes": 46738
       }
-    ]
+    ],
+    "workId": "work-로스쿨"
   },
   {
     "id": "work-everyone-fights-worthlessness",
@@ -269,7 +272,8 @@
         "height": 360,
         "bytes": 49778
       }
-    ]
+    ],
+    "workId": "work-모두가-자신의-무가치함과-싸우고-있다"
   },
   {
     "id": "work-nambeol",
@@ -301,7 +305,8 @@
         "height": 896,
         "bytes": 78480
       }
-    ]
+    ],
+    "workId": "work-남벌"
   },
   {
     "id": "work-moving-season-2",
@@ -333,7 +338,8 @@
         "height": 741,
         "bytes": 40468
       }
-    ]
+    ],
+    "workId": "work-무빙-시즌-2"
   },
   {
     "id": "work-light-shop",
@@ -365,7 +371,8 @@
         "height": 800,
         "bytes": 93476
       }
-    ]
+    ],
+    "workId": "work-조명가게"
   },
   {
     "id": "work-moving",
@@ -397,7 +404,8 @@
         "height": 826,
         "bytes": 52780
       }
-    ]
+    ],
+    "workId": "work-무빙"
   },
   {
     "id": "work-alchemy-of-souls",
@@ -429,7 +437,8 @@
         "height": 657,
         "bytes": 28316
       }
-    ]
+    ],
+    "workId": "work-환혼"
   },
   {
     "id": "work-alchemy-of-souls-light-and-shadow",
@@ -461,7 +470,8 @@
         "height": 655,
         "bytes": 24260
       }
-    ]
+    ],
+    "workId": "work-환혼-빛과-그림자"
   },
   {
     "id": "work-resident-playbook",
@@ -493,7 +503,8 @@
         "height": 665,
         "bytes": 36538
       }
-    ]
+    ],
+    "workId": "work-언젠가는-슬기로울-전공의생활"
   },
   {
     "id": "work-deaths-game",
@@ -525,7 +536,8 @@
         "height": 360,
         "bytes": 17116
       }
-    ]
+    ],
+    "workId": "work-이재-곧-죽습니다"
   },
   {
     "id": "work-hunt",
@@ -557,7 +569,8 @@
         "height": 912,
         "bytes": 62046
       }
-    ]
+    ],
+    "workId": "work-헌트"
   },
   {
     "id": "work-the-school-nurse-files",
@@ -589,7 +602,8 @@
         "height": 467,
         "bytes": 41154
       }
-    ]
+    ],
+    "workId": "work-보건교사-안은영"
   },
   {
     "id": "work-sweethome-2",
@@ -622,7 +636,8 @@
         "height": 360,
         "bytes": 14158
       }
-    ]
+    ],
+    "workId": "work-스위트홈-2"
   },
   {
     "id": "work-sweethome",
@@ -654,6 +669,7 @@
         "height": 427,
         "bytes": 17284
       }
-    ]
+    ],
+    "workId": "work-스위트홈"
   }
 ]

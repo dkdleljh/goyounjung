@@ -31,7 +31,7 @@ function category(file){
  return 'sources';
 }
 const files=git('ls-files','-z').split('\0').filter(f=>/^(pages|sources|news)\//.test(f)&&f.endsWith('.md')&&!/\/(templates|checklists)\//.test(f)).sort();
-export const sourceFiles=[...files,'data/facts/profile.json','data/facts/works.json'].sort().map(file=>({file,sha256:sha256(fs.readFileSync(path.join(root,file)))}));
+export const sourceFiles=[...files,'data/facts/profile.json','data/facts/works.json',...(fs.existsSync(path.join(root,'data/reports/heartbeat.json'))?['data/reports/heartbeat.json']:[])].sort().map(file=>({file,sha256:sha256(fs.readFileSync(path.join(root,file)))}));
 if(process.env.CI && git('status','--porcelain','--',...sourceFiles.map(f=>f.file)))throw new Error('Wiki build inputs must match the checked-out commit');
 export const documents=files.map(file=>{
  const markdown=fs.readFileSync(path.join(root,file),'utf8');
@@ -74,8 +74,14 @@ const runs=documents.filter(d=>d.group==='news').map(d=>{
  const result=d.markdown.match(/^- 결과:\s*(.+)$/m)?.[1]?.trim();
  return timestamp?{timestamp:timestamp.replace(' ','T')+(timestamp.length===16?':00':'')+'+09:00',result,url:d.url}:null;
 }).filter(Boolean).sort((a,b)=>b.timestamp.localeCompare(a.timestamp));
+const heartbeatPath=path.join(root,'data/reports/heartbeat.json');
+if(fs.existsSync(heartbeatPath)){
+ const h=JSON.parse(fs.readFileSync(heartbeatPath,'utf8'));
+ if(h.timestamp&&!Number.isNaN(Date.parse(h.timestamp)))runs.push({timestamp:h.timestamp,result:({success:'성공',partial:'부분성공',failure:'실패'})[h.status]||'확인 필요',url:BASE+'wiki/pages/automation-measurements/'});
+ runs.sort((a,b)=>Date.parse(b.timestamp)-Date.parse(a.timestamp));
+}
 export const latestRun=runs[0]||null;
 export function dateLabel(date){return new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Seoul'}).format(new Date(date));}
 export const workSlugs={'사이코메트리 그녀석':'he-is-psychometric','보건교사 안은영':'the-school-nurse-files','스위트홈':'sweethome','스위트홈 2':'sweethome-2','로스쿨':'law-school','환혼':'alchemy-of-souls','환혼 빛과 그림자':'alchemy-of-souls-light-and-shadow','헌트':'hunt','무빙':'moving','이재, 곧 죽습니다':'deaths-game','조명가게':'light-shop','언젠가는 슬기로울 전공의생활':'resident-playbook','이 사랑 통역 되나요?':'can-this-love-be-translated','모두가 자신의 무가치함과 싸우고 있다':'everyone-fights-worthlessness'};
-export const workUrl=w=>documents.find(d=>d.file.startsWith('pages/works/')&&d.title===w.title)?.url||byFile.get('pages/works/'+workSlugs[w.title]+'.md')?.url||BASE+'wiki/pages/filmography/';
+export const workUrl=w=>byFile.get(w.page)?.url||documents.find(d=>d.file.startsWith('pages/works/')&&d.title===w.title)?.url||byFile.get('pages/works/'+workSlugs[w.title]+'.md')?.url||BASE+'wiki/pages/filmography/';
 export const searchData=documents.map(d=>({title:d.title,url:d.url,group:d.group,text:d.markdown.replace(/<!--[\s\S]*?-->/g,'').replace(/https?:\/\/\S+/g,'')}));

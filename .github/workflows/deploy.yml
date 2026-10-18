@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '47 */6 * * *'
+    - cron: '7,22,37,52 * * * *'
 permissions:
   contents: read
 concurrency:
@@ -14,6 +14,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.revision.outputs.changed }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/checkout@v6
@@ -22,19 +24,44 @@ jobs:
           ref: main
           path: .wiki
           persist-credentials: false
+      - name: Rebuild only when source revisions changed
+        id: revision
+        run: |
+          python3 - <<'PYCODE'
+          import json, os, subprocess, urllib.request
+          def git(*args): return subprocess.check_output(['git', *args], text=True).strip()
+          changed = True
+          try:
+              with urllib.request.urlopen('https://dkdleljh.github.io/goyounjung/sync.json', timeout=20) as response:
+                  live = json.load(response)
+              changed = live.get('revision') != git('-C', '.wiki', 'rev-parse', 'HEAD') or live.get('siteRevision') != git('rev-parse', 'HEAD')
+          except Exception as exc:
+              print('Rebuild required:', type(exc).__name__)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'changed={str(changed).lower()}\n')
+          PYCODE
       - uses: actions/setup-node@v6
+        if: steps.revision.outputs.changed == 'true'
         with:
           node-version: '24'
           cache: npm
       - run: npm ci
+        if: steps.revision.outputs.changed == 'true'
       - run: npm test
+        if: steps.revision.outputs.changed == 'true'
+      - run: npm run test:future-work
+        if: steps.revision.outputs.changed == 'true'
       - run: npm run build
+        if: steps.revision.outputs.changed == 'true'
       - run: npm run check:links
+        if: steps.revision.outputs.changed == 'true'
       - uses: actions/upload-pages-artifact@v4
+        if: steps.revision.outputs.changed == 'true'
         with:
           path: dist
   deploy:
     needs: build
+    if: needs.build.outputs.changed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:

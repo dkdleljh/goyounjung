@@ -4,7 +4,7 @@ import catalog from '../data/photos.json' with {type:'json'};
 export const photos=catalog;
 export const photoById=new Map(photos.map(photo=>[photo.id,photo]));
 const byWork=new Map(photos.filter(photo=>photo.workTitle).map(photo=>[photo.workTitle,photo]));
-export const workPhoto=work=>byWork.get(work.title);
+export const workPhoto=work=>photos.find(photo=>photo.workId&&photo.workId===work.id)||byWork.get(work.title);
 const bySource=new Map(photos.flatMap(photo=>photo.variants.flatMap(v=>[
  [v.src,photo],['https://dkdleljh.github.io'+v.src,photo]
 ])));

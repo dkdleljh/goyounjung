@@ -3,13 +3,15 @@ import {workPhoto,renderPhoto} from '../lib/photos.mjs';
 import {workUrl} from '../lib/wiki.mjs';
 const {work,heading='h2',priority=false}=Astro.props;
 const photo=workPhoto(work);
-if(!photo)throw new Error(`Missing representative image: ${work.title}`);
+
 const Heading=heading;
 ---
 <article class="work-card" data-platform={work.platform}>
- <Fragment set:html={renderPhoto(photo.id,{href:workUrl(work),compact:true,priority,sizes:'(max-width: 480px) 88vw, (max-width: 760px) 42vw, 300px'})}/>
+ {photo ? <Fragment set:html={renderPhoto(photo.id,{href:workUrl(work),compact:true,priority,sizes:'(max-width: 480px) 88vw, (max-width: 760px) 42vw, 300px'})}/> : <a class="work-photo-placeholder" href={workUrl(work)} aria-label={`${work.title} 작품 정보`}><span>{work.title}</span><small>대표 사진 준비 중</small></a>}
  <a class="work-caption" href={workUrl(work)}>
-  <div><p class="work-year">{work.year} / {work.platform}</p><Heading>{work.title}</Heading><p>{work.role} 역</p><p>{work.status==='released'?'공개 완료':work.status==='reported_once'?'공개 예정 보도':'공개 상태 확인 필요'}{work.note?' · '+work.note:''}</p></div>
+  <div><p class="work-year">{work.year} / {work.platform}</p><Heading>{work.title}</Heading><p>{work.role} 역</p><p>{work.status==='released'?'공개 완료':({reported_once:'공개 예정 보도',confirmed:'출연 확정',scheduled:'공개 예정',filming:'촬영 중',postponed:'공개 연기',cancelled:'취소'})[work.status]||'공개 상태 확인 필요'}{work.note?' · '+work.note:''}</p></div>
   <span aria-hidden="true">↗</span>
  </a>
 </article>
+
+<style>.work-photo-placeholder{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1rem;aspect-ratio:2/3;background:#ede9e2;color:#51483f;padding:1.5rem;text-align:center;overflow-wrap:anywhere}.work-photo-placeholder span{font-size:clamp(1.1rem,3vw,1.8rem);font-weight:700}</style>
