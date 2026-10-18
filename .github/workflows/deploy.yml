@@ -81,4 +81,4 @@ jobs:
           path: .wiki
           persist-credentials: false
       - name: Verify published source and every deployed artifact
-        run: python3 .wiki/scripts/verify_website_sync.py --wait 900
+        run: python3 .wiki/scripts/verify_website_sync.py --wait 900 --artifact-urls
