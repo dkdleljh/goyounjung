@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {Marked} from 'marked';
 import sanitizeHtml from 'sanitize-html';
 import GithubSlugger from 'github-slugger';
+import {registeredPhoto,renderPhoto} from './photos.mjs';
 export const BASE='/goyounjung/';
 export const REPO='https://github.com/dkdleljh/goyoonjung-wiki';
 export const root=path.resolve(process.env.WIKI_DIR || '.wiki');
@@ -54,11 +55,19 @@ export function rewriteLink(href,file){
 export function render(markdown,file){
  const slugger=new GithubSlugger();const headings=[];
  const parser=new Marked({gfm:true,renderer:{
+  paragraph({tokens}){
+   if(tokens.length===1&&tokens[0].type==='image'){
+    const photo=registeredPhoto(tokens[0].href);
+    if(photo)return renderPhoto(photo.id,{priority:file==='pages/profile.md'});
+   }
+   return `<p>${this.parser.parseInline(tokens)}</p>`;
+  },
+  image({href,text}){return `<a href="${String(href).replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${String(text||'원본 이미지 보기').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</a>`;},
   html({text}){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');},
   heading({tokens,depth}){const text=this.parser.parseInline(tokens);const plain=sanitizeHtml(text,{allowedTags:[],allowedAttributes:{}});const id=slugger.slug(plain);if(depth>1&&depth<4)headings.push({text:plain,id,depth});return `<h${depth} id="${id}">${text}</h${depth}>`;}
  }});
  const html=parser.parse(markdown.replace(/<!--[\s\S]*?-->/g,''));
- return {html:sanitizeHtml(html,{allowedTags:sanitizeHtml.defaults.allowedTags.concat(['img']),allowedAttributes:{...sanitizeHtml.defaults.allowedAttributes,'*':['id'],a:['href','rel'],img:['src','alt','loading']},transformTags:{a:(tag,attrs)=>({tagName:tag,attribs:{...attrs,href:rewriteLink(attrs.href,file),rel:'noopener noreferrer'}}),img:(tag,attrs)=>({tagName:'a',attribs:{href:rewriteLink(attrs.src,file)},text:attrs.alt||'원본 이미지 보기'})}}),headings};
+ return {html:sanitizeHtml(html,{allowedTags:sanitizeHtml.defaults.allowedTags.concat(['img']),allowedAttributes:{...sanitizeHtml.defaults.allowedAttributes,'*':['id'],figure:['class','data-photo'],figcaption:[],span:['class'],a:['href','rel','class','aria-label'],img:['src','srcset','sizes','width','height','alt','loading','decoding','fetchpriority']},transformTags:{a:(tag,attrs)=>({tagName:tag,attribs:{...attrs,href:registeredPhoto(attrs.href)?attrs.href:rewriteLink(attrs.href,file),rel:attrs.rel||'noopener noreferrer'}})}}),headings};
 }
 const runs=documents.filter(d=>d.group==='news').map(d=>{
  const timestamp=d.markdown.match(/^- 실행:\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})?)/m)?.[1];

@@ -1,0 +1,5 @@
+---
+import {renderPhoto} from '../lib/photos.mjs';
+const {id,priority=false,sizes}=Astro.props;
+---
+<Fragment set:html={renderPhoto(id,{priority,sizes})}/>
