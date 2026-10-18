@@ -31,7 +31,7 @@ for(const width of [320,390,768,1440]){
    const details=await img.evaluate(el=>({loaded:el.naturalWidth>0,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,ratio:Number(el.getAttribute('width'))/Number(el.getAttribute('height')),srcset:el.srcset,alt:el.alt}));
    assert.ok(details.loaded&&details.alt&&details.srcset);
    // Gallery previews use contain; body photographs use intrinsic aspect ratio.
-   const inGallery=await img.evaluate(el=>!!el.closest('.photo-grid'));
+   const inGallery=await img.evaluate(el=>!!el.closest('.photo-grid, .work-card'));
    if(!inGallery)assert.ok(Math.abs(details.width/details.height-details.ratio)<0.02,`Distorted photograph: ${route}`);
   }
   assert.ok(await photoPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Photo overflow: ${width} ${route}`);

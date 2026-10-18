@@ -1,6 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {render,rewriteLink,documents,works,workUrl,latestRun} from '../src/lib/wiki.mjs';
 import {findResults} from '../src/lib/search.mjs';
+import {photos,workPhoto,renderPhoto} from '../src/lib/photos.mjs';
+import fs from 'node:fs';
 test('relative links resolve across nested wiki pages',()=>{assert.equal(rewriteLink('../profile.md','pages/works/moving.md'),'/goyounjung/wiki/pages/profile/');assert.equal(rewriteLink('https://example.org','pages/profile.md'),'https://example.org');assert.equal(rewriteLink('javascript:alert(1)','pages/profile.md'),'');assert.equal(rewriteLink('../../../.env','pages/profile.md'),'');});
 test('rendering preserves source text without executable markup',()=>{const {html}=render('# Title\n\n<script>alert(1)</script>\n\n[bad](javascript:alert)\n\n![x](https://example.org/a.png)\n\n## 동일\n\n## 동일\n\n<!-- internal -->','pages/profile.md');assert.ok(!html.includes('<script>'));assert.ok(!html.includes('javascript:'));assert.ok(!html.includes('internal'));assert.match(html,/id="동일-1"/);assert.ok(!html.includes('<img'));});
 test('every work and every source document has a route',()=>{assert.ok(documents.length>80);assert.equal(new Set(documents.map(d=>d.url)).size,documents.length);for(const w of works)assert.ok(documents.some(d=>d.url===workUrl(w)));assert.ok(latestRun?.timestamp);});
@@ -27,4 +29,32 @@ test('unreviewed image URLs and forged HTML cannot inject image loads or scripts
  }
  const {html}=render('<img src="/goyounjung/images/photos/portrait-960.webp" onerror="alert(1)">','pages/profile.md');
  assert.ok(!html.includes('<img'));
+});
+
+test('each work has exactly one correctly linked representative image in its article',()=>{
+ assert.equal(photos.filter(p=>p.workTitle).length,works.length);
+ for(const work of works){
+  const photo=workPhoto(work);
+  assert.ok(photo,`Missing image: ${work.title}`);
+  assert.equal(photos.filter(p=>p.workTitle===work.title).length,1);
+  const doc=documents.find(d=>d.url===workUrl(work));
+  assert.ok(doc.file.startsWith('pages/works/'));
+  const {html}=render(doc.markdown,doc.file);
+  assert.equal((html.match(/<img /g)||[]).length,1,work.title);
+  assert.ok(html.includes(`data-photo="${photo.id}"`),work.title);
+  for(const variant of photo.variants){
+   assert.equal(fs.statSync('public'+variant.src.replace('/goyounjung','')).size,variant.bytes);
+   assert.ok(variant.width>0&&variant.height>0);
+  }
+  assert.ok(photo.source.startsWith('https://'));
+ }
+});
+test('editorial images retain source credit without inventing a CC license',()=>{
+ const photo=workPhoto({title:'환혼 빛과 그림자'});
+ const html=renderPhoto(photo.id);
+ assert.match(html,/고윤정 캐릭터 포스터/);
+ assert.match(html,/저작권 보유 이미지/);
+ assert.ok(!html.includes('rel="license'));
+ assert.ok(!html.includes('undefined'));
+ for(const title of ['남벌','무빙 시즌 2'])assert.match(workPhoto({title}).kind,/발표 보도/);
 });

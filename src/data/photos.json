@@ -135,7 +135,9 @@
         "height": 576,
         "bytes": 64734
       }
-    ]
+    ],
+    "workTitle": "이 사랑 통역 되나요?",
+    "kind": "제작발표회 사진"
   },
   {
     "id": "interview",
@@ -170,6 +172,487 @@
         "width": 960,
         "height": 767,
         "bytes": 29796
+      }
+    ]
+  },
+  {
+    "id": "work-he-is-psychometric",
+    "slug": "he-is-psychometric",
+    "source": "https://tvn.cjenm.com/ko/heispsychometric/photo1/",
+    "original": "https://poc-cf-image.cjenm.com/resize/459/public/pcms/rep/B120192525/kr/B120192525_rep_1667888595522.jpg?v=1742978883",
+    "originalSha256": "04a701f1bbf1a7aae26b1f3da276e584035007e39155ad283e184e6206db6840",
+    "workTitle": "사이코메트리 그녀석",
+    "title": "사이코메트리 그녀석 · 공식 포스터",
+    "kind": "공식 포스터",
+    "alt": "사이코메트리 그녀석 공식 포스터 속 박진영과 신예은",
+    "author": "tvN / CJ ENM",
+    "authorUrl": "https://tvn.cjenm.com/ko/heispsychometric/photo1/",
+    "date": "2019",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-he-is-psychometric-320.webp",
+        "width": 320,
+        "height": 457,
+        "bytes": 11634
+      },
+      {
+        "src": "/goyounjung/images/photos/work-he-is-psychometric-459.webp",
+        "width": 459,
+        "height": 655,
+        "bytes": 20266
+      }
+    ]
+  },
+  {
+    "id": "work-law-school",
+    "slug": "law-school",
+    "source": "https://tv.jtbc.co.kr/lawschool",
+    "original": "https://fs.jtbc.co.kr/joydata/CP00000001/prog/drama/lawschool/img/20260813_110147_904.jpg",
+    "originalSha256": "7c6d113381b315afb255d52ba1dd4c0d203b674242e100b7eb207c035b4549e4",
+    "workTitle": "로스쿨",
+    "title": "로스쿨 · 공식 홍보 이미지",
+    "kind": "공식 홍보 이미지",
+    "alt": "법정에 모인 로스쿨 출연진의 공식 홍보 이미지",
+    "author": "JTBC",
+    "authorUrl": "https://tv.jtbc.co.kr/lawschool",
+    "date": "2021",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-law-school-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 15398
+      },
+      {
+        "src": "/goyounjung/images/photos/work-law-school-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 46738
+      }
+    ]
+  },
+  {
+    "id": "work-everyone-fights-worthlessness",
+    "slug": "everyone-fights-worthlessness",
+    "source": "https://tv.jtbc.co.kr/wearealltryinghere",
+    "original": "https://fs.jtbc.co.kr/joydata/CP00000001/prog/drama/wearealltryinghere/img/20260813_104407_774.jpg",
+    "originalSha256": "0af8e492ed0277259ca2553a86dc38f14b4676074f40a089a657f0db1b80e06c",
+    "workTitle": "모두가 자신의 무가치함과 싸우고 있다",
+    "title": "모두가 자신의 무가치함과 싸우고 있다 · 공식 홍보 이미지",
+    "kind": "공식 홍보 이미지",
+    "alt": "모두가 자신의 무가치함과 싸우고 있다 출연진의 단체 홍보 사진",
+    "author": "JTBC",
+    "authorUrl": "https://tv.jtbc.co.kr/wearealltryinghere",
+    "date": "2026",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-everyone-fights-worthlessness-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 14630
+      },
+      {
+        "src": "/goyounjung/images/photos/work-everyone-fights-worthlessness-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 49778
+      }
+    ]
+  },
+  {
+    "id": "work-nambeol",
+    "slug": "nambeol",
+    "source": "https://enews.imbc.com/News/RetrieveNewsInfo/510753",
+    "original": "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2026/07/07/f39b1afa-c9ea-4454-8153-ccfa757c897f.jpg",
+    "originalSha256": "ef69d800f5000c2df55750222c7075e74e38e8e16790d48f61f95d4195e08e52",
+    "workTitle": "남벌",
+    "title": "남벌 · 출연 발표 보도 사진",
+    "kind": "출연 발표 보도 사진",
+    "alt": "남벌 출연 확정 보도에 실린 고윤정의 행사 사진. 영화 포스터나 장면 사진이 아님",
+    "author": "iMBC연예",
+    "authorUrl": "https://enews.imbc.com/News/RetrieveNewsInfo/510753",
+    "date": "2026-07-07",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-nambeol-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 23438
+      },
+      {
+        "src": "/goyounjung/images/photos/work-nambeol-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 78480
+      }
+    ]
+  },
+  {
+    "id": "work-moving-season-2",
+    "slug": "moving-season-2",
+    "source": "https://ent.sbs.co.kr/news/article.do?article_id=E10010316722&cooper=ent.sbs.co.kr",
+    "original": "https://img.sbs.co.kr/newsnet/etv/upload/2026/05/18/30001062809_1280.jpg",
+    "originalSha256": "d8996e63738560b155e0d106a1e23628515e2398e32faf1e8030827240147906",
+    "workTitle": "무빙 시즌 2",
+    "title": "무빙 시즌 2 · 제작 발표 보도 이미지",
+    "kind": "제작 발표 보도 이미지",
+    "alt": "무빙 시즌 2 제작 발표 보도에 실린 주요 출연진 사진 모음. 시즌 2 장면 사진이 아님",
+    "author": "SBS연예뉴스 / 디즈니+",
+    "authorUrl": "https://ent.sbs.co.kr/news/article.do?article_id=E10010316722&cooper=ent.sbs.co.kr",
+    "date": "2026-05-18",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-moving-season-2-320.webp",
+        "width": 320,
+        "height": 393,
+        "bytes": 17798
+      },
+      {
+        "src": "/goyounjung/images/photos/work-moving-season-2-604.webp",
+        "width": 604,
+        "height": 741,
+        "bytes": 40468
+      }
+    ]
+  },
+  {
+    "id": "work-light-shop",
+    "slug": "light-shop",
+    "source": "https://prensa.disneylatino.com/press-kit/light-shop-entre-la-vida-y-la-muerte",
+    "original": "https://lumiere-a.akamaihd.net/v1/images/light_shop_season1_social_static_4x5_1080x1350_payoff_d_478fd5ea.png?region=0%2C0%2C1080%2C1350",
+    "originalSha256": "54d712e20c4c964f76778cf3333c5ac1509540ab2597d0e01e15e49ebfdbd677",
+    "workTitle": "조명가게",
+    "title": "조명가게 · 공식 포스터 · 해외판",
+    "kind": "공식 포스터 · 해외판",
+    "alt": "전구 주위로 등장인물이 배치된 조명가게 공식 해외 홍보 포스터",
+    "author": "Disney+",
+    "authorUrl": "https://prensa.disneylatino.com/press-kit/light-shop-entre-la-vida-y-la-muerte",
+    "date": "2024",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-light-shop-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 31234
+      },
+      {
+        "src": "/goyounjung/images/photos/work-light-shop-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 93476
+      }
+    ]
+  },
+  {
+    "id": "work-moving",
+    "slug": "moving",
+    "source": "https://news.tf.co.kr/read/entertain/2027250.htm",
+    "original": "https://img.tf.co.kr/article/home/2023/06/29/202355631688013888.jpg",
+    "originalSha256": "716d78973244506a22073069185613847a6c065718b8af7ba9af86606377153e",
+    "workTitle": "무빙",
+    "title": "무빙 · 공식 포스터 · 정원고 3인방",
+    "kind": "공식 포스터 · 정원고 3인방",
+    "alt": "무빙의 장희수, 김봉석, 이강훈을 연기한 고윤정, 이정하, 김도훈의 공식 포스터",
+    "author": "디즈니+ 제공 / 더팩트",
+    "authorUrl": "https://news.tf.co.kr/read/entertain/2027250.htm",
+    "date": "2023-06-29",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-moving-320.webp",
+        "width": 320,
+        "height": 456,
+        "bytes": 23118
+      },
+      {
+        "src": "/goyounjung/images/photos/work-moving-580.webp",
+        "width": 580,
+        "height": 826,
+        "bytes": 52780
+      }
+    ]
+  },
+  {
+    "id": "work-alchemy-of-souls",
+    "slug": "alchemy-of-souls",
+    "source": "https://tvn.cjenm.com/ko/%E3%85%8A/photo3/",
+    "original": "https://poc-cf-image.cjenm.com/resize/459/public/pcms/rep/B120214630/kr/B120214630_rep_1667888593203.jpg?v=1742978883",
+    "originalSha256": "4dcb2ab1f8e198cc5256c58233d94a08ae0c5157fc0b0a8e30d824a0aa4e72eb",
+    "workTitle": "환혼",
+    "title": "환혼 · 공식 듀오 포스터",
+    "kind": "공식 듀오 포스터",
+    "alt": "검을 가운데 두고 장욱과 무덕이가 마주 보는 환혼 공식 듀오 포스터",
+    "author": "tvN / CJ ENM",
+    "authorUrl": "https://tvn.cjenm.com/ko/%E3%85%8A/photo3/",
+    "date": "2022",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-alchemy-of-souls-320.webp",
+        "width": 320,
+        "height": 458,
+        "bytes": 16250
+      },
+      {
+        "src": "/goyounjung/images/photos/work-alchemy-of-souls-459.webp",
+        "width": 459,
+        "height": 657,
+        "bytes": 28316
+      }
+    ]
+  },
+  {
+    "id": "work-alchemy-of-souls-light-and-shadow",
+    "slug": "alchemy-of-souls-light-and-shadow",
+    "source": "https://tvn.cjenm.com/ko/alchemyofsouls/photo1/",
+    "original": "https://poc-cf-image.cjenm.com/resize/459/public/pcms/photogroup/B120227477/kr/B120227477_photogroup_1676445453212.jpg?v=1742978883",
+    "originalSha256": "b59b5abefa5a8b100def1e57a9eb49a46f1bfe6d942bbd4d2defac04fe351e18",
+    "workTitle": "환혼 빛과 그림자",
+    "title": "환혼 빛과 그림자 · 고윤정 캐릭터 포스터",
+    "kind": "고윤정 캐릭터 포스터",
+    "alt": "환혼 빛과 그림자의 고윤정 캐릭터 포스터",
+    "author": "tvN / CJ ENM",
+    "authorUrl": "https://tvn.cjenm.com/ko/alchemyofsouls/photo1/",
+    "date": "2022",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-alchemy-of-souls-light-and-shadow-320.webp",
+        "width": 320,
+        "height": 457,
+        "bytes": 13760
+      },
+      {
+        "src": "/goyounjung/images/photos/work-alchemy-of-souls-light-and-shadow-459.webp",
+        "width": 459,
+        "height": 655,
+        "bytes": 24260
+      }
+    ]
+  },
+  {
+    "id": "work-resident-playbook",
+    "slug": "resident-playbook",
+    "source": "https://www.yuljehospital.com/ko/",
+    "original": "https://web-cf-image.cjenm.com/public/resources/MC010012/images/etc/yuljehospital/main-visual-bg03-mb.jpg",
+    "originalSha256": "6db392257871e65abfbd515c2599e21e149b310c76c719bd4191425c54932225",
+    "workTitle": "언젠가는 슬기로울 전공의생활",
+    "title": "언젠가는 슬기로울 전공의생활 · 공식 홍보 사진",
+    "kind": "공식 홍보 사진",
+    "alt": "흰 가운을 입고 나란히 서 있는 언젠가는 슬기로울 전공의생활의 고윤정과 동료 출연진",
+    "author": "tvN / CJ ENM",
+    "authorUrl": "https://www.yuljehospital.com/ko/",
+    "date": "2025",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-resident-playbook-320.webp",
+        "width": 320,
+        "height": 333,
+        "bytes": 14010
+      },
+      {
+        "src": "/goyounjung/images/photos/work-resident-playbook-640.webp",
+        "width": 640,
+        "height": 665,
+        "bytes": 36538
+      }
+    ]
+  },
+  {
+    "id": "work-deaths-game",
+    "slug": "deaths-game",
+    "source": "https://www.cjenm.com/ko/featured-contents/%EC%9D%B4%EC%9E%AC-%EA%B3%A7-%EC%A3%BD%EC%8A%B5%EB%8B%88%EB%8B%A4/",
+    "original": "https://poc-cf-image.cjenm.com/public/share/metamng/programs/contentsdetailimagedeathsgame05.jpg?v=1715823570",
+    "originalSha256": "daef3e1afb878ac16ed8420a0dd20ff9f56c32b658ab2a112272421100ca2b8d",
+    "workTitle": "이재, 곧 죽습니다",
+    "title": "이재, 곧 죽습니다 · 고윤정 공식 스틸컷",
+    "kind": "고윤정 공식 스틸컷",
+    "alt": "이재 곧 죽습니다에서 이지수 역을 맡은 고윤정의 공식 장면 사진",
+    "author": "TVING / CJ ENM",
+    "authorUrl": "https://www.cjenm.com/ko/featured-contents/%EC%9D%B4%EC%9E%AC-%EA%B3%A7-%EC%A3%BD%EC%8A%B5%EB%8B%88%EB%8B%A4/",
+    "date": "2023",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-deaths-game-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 5656
+      },
+      {
+        "src": "/goyounjung/images/photos/work-deaths-game-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 17116
+      }
+    ]
+  },
+  {
+    "id": "work-hunt",
+    "slug": "hunt",
+    "source": "https://www.magnoliapictures.com/hunt-press-kit",
+    "original": "https://images.squarespace-cdn.com/content/v1/576454e629687fb39bd1f977/1670258522416-F1943JYHD0KBIB4GRKXI/Hunt_KeyArt_Final.jpg",
+    "originalSha256": "350ec2bb70380e8a367fddac2e9541aec00447ec39cc5b4c95a2ed0334f8b072",
+    "workTitle": "헌트",
+    "title": "헌트 · 공식 포스터 · 해외판",
+    "kind": "공식 포스터 · 해외판",
+    "alt": "이정재와 정우성을 배치한 영화 헌트의 공식 해외 포스터",
+    "author": "Magnet Releasing",
+    "authorUrl": "https://www.magnoliapictures.com/hunt-press-kit",
+    "date": "2022",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-hunt-320.webp",
+        "width": 320,
+        "height": 456,
+        "bytes": 18474
+      },
+      {
+        "src": "/goyounjung/images/photos/work-hunt-640.webp",
+        "width": 640,
+        "height": 912,
+        "bytes": 62046
+      }
+    ]
+  },
+  {
+    "id": "work-the-school-nurse-files",
+    "slug": "the-school-nurse-files",
+    "source": "https://about.netflix.com/en/news/the-school-nurse-files-starring-jung-yu-mi-and-nam-joo-hyuk-confirmed-for-september-25-release",
+    "original": "https://d2ajy4iry6zk4j.cloudfront.net/pubvat/thumbnail/large/p3h5y5rsg",
+    "originalSha256": "687e1af8615afe82ea6edc643fa05d8f0c2a7ccdde88de03e332049605195c10",
+    "workTitle": "보건교사 안은영",
+    "title": "보건교사 안은영 · 공식 캐릭터 포스터",
+    "kind": "공식 캐릭터 포스터",
+    "alt": "보건교사 안은영의 정유미와 남주혁 캐릭터 포스터",
+    "author": "Netflix",
+    "authorUrl": "https://about.netflix.com/en/news/the-school-nurse-files-starring-jung-yu-mi-and-nam-joo-hyuk-confirmed-for-september-25-release",
+    "date": "2020-08-14",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-the-school-nurse-files-320.webp",
+        "width": 320,
+        "height": 233,
+        "bytes": 14210
+      },
+      {
+        "src": "/goyounjung/images/photos/work-the-school-nurse-files-640.webp",
+        "width": 640,
+        "height": 467,
+        "bytes": 41154
+      }
+    ]
+  },
+  {
+    "id": "work-sweethome-2",
+    "slug": "sweethome-2",
+    "source": "https://about.netflix.com/en/news/sweet-home-season-2-main-trailer",
+    "original": "https://i.ytimg.com/vi/o6BJUZVgbH0/maxresdefault.jpg",
+    "originalSha256": "ceb6a5ace452cda67a92dcca849cc2fef8a26d33e7240985e33c960d170e72d4",
+    "workTitle": "스위트홈 2",
+    "title": "스위트홈 2 · 공식 예고편 대표 이미지",
+    "kind": "공식 예고편 대표 이미지",
+    "alt": "스위트홈 시즌 2 공식 예고편의 송강과 이진욱 대표 이미지",
+    "author": "Netflix",
+    "authorUrl": "https://about.netflix.com/en/news/sweet-home-season-2-main-trailer",
+    "date": "2023-11-16",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "origin": "https://www.youtube.com/watch?v=o6BJUZVgbH0",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-sweethome-2-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 6522
+      },
+      {
+        "src": "/goyounjung/images/photos/work-sweethome-2-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 14158
+      }
+    ]
+  },
+  {
+    "id": "work-sweethome",
+    "slug": "sweethome",
+    "source": "https://about.netflix.com/en/news/netflix-brings-a-variety-of-entertainment-with-7-new-korean-films-and-series",
+    "original": "https://images.ctfassets.net/4cd45et68cgf/SdkOTT1anLNy19Jgj6Odh/03b9d745b0bf7295ae8db7e80660368d/SweetHome_Unit_101_CSH013_1059.jpg",
+    "originalSha256": "b21660ce8da1bd0d0a188f310bed32c313e9d25189e98269ba1e0a7025d81cde",
+    "workTitle": "스위트홈",
+    "title": "스위트홈 · 시즌 1 공식 스틸컷",
+    "kind": "시즌 1 공식 스틸컷",
+    "alt": "스위트홈 시즌 1의 서이경 역 이시영 공식 장면 사진",
+    "author": "Netflix",
+    "authorUrl": "https://about.netflix.com/en/news/netflix-brings-a-variety-of-entertainment-with-7-new-korean-films-and-series",
+    "date": "2020",
+    "checkedAt": "2026-10-18",
+    "rights": "저작권 보유 이미지",
+    "usage": "작품 식별·소개를 위한 축소 이미지. 자유 이용 라이선스가 부여된 자료가 아닙니다.",
+    "changes": "원본 구도 유지 · 축소 및 WebP 변환",
+    "variants": [
+      {
+        "src": "/goyounjung/images/photos/work-sweethome-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 6220
+      },
+      {
+        "src": "/goyounjung/images/photos/work-sweethome-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 17284
       }
     ]
   }
