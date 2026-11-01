@@ -103,5 +103,5 @@ jobs:
           WIKI_REVISION: ${{ needs.build.outputs.wiki_revision }}
           SITE_REVISION: ${{ github.sha }}
         run: >-
-          python3 .wiki/scripts/verify_website_sync.py --wait 900 --artifact-urls
+          python3 .wiki/scripts/verify_website_sync.py --wait 900 --artifact-urls --versioned-urls
           --wiki-revision "$WIKI_REVISION" --site-revision "$SITE_REVISION"
