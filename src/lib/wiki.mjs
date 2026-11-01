@@ -31,7 +31,10 @@ function category(file){
  return 'sources';
 }
 const files=git('ls-files','-z').split('\0').filter(f=>/^(pages|sources|news)\//.test(f)&&f.endsWith('.md')&&!/\/(templates|checklists)\//.test(f)).sort();
-export const sourceFiles=[...files,'data/facts/profile.json','data/facts/works.json',...(fs.existsSync(path.join(root,'data/reports/heartbeat.json'))?['data/reports/heartbeat.json']:[])].sort().map(file=>({file,sha256:sha256(fs.readFileSync(path.join(root,file)))}));
+export const sourceFiles=[...files,'data/facts/profile.json','data/facts/works.json',...['data/reports/heartbeat.json','data/reports/link-checkpoints.json'].filter(f=>fs.existsSync(path.join(root,f)))].sort().map(file=>({file,sha256:sha256(fs.readFileSync(path.join(root,file)))}));
+const linkChecksPath=path.join(root,'data/reports/link-checkpoints.json');
+const linkChecks=fs.existsSync(linkChecksPath)?JSON.parse(fs.readFileSync(linkChecksPath,'utf8')):{};
+export const unavailableLink=(href,checks=linkChecks)=>checks[href]?.status==='bad'&&[404,410].includes(checks[href]?.code);
 if(process.env.CI && git('status','--porcelain','--',...sourceFiles.map(f=>f.file)))throw new Error('Wiki build inputs must match the checked-out commit');
 export const documents=files.map(file=>{
  const markdown=fs.readFileSync(path.join(root,file),'utf8');
@@ -67,7 +70,7 @@ export function render(markdown,file){
   heading({tokens,depth}){const text=this.parser.parseInline(tokens);const plain=sanitizeHtml(text,{allowedTags:[],allowedAttributes:{}});const id=slugger.slug(plain);if(depth>1&&depth<4)headings.push({text:plain,id,depth});return `<h${depth} id="${id}">${text}</h${depth}>`;}
  }});
  const html=parser.parse(markdown.replace(/<!--[\s\S]*?-->/g,''));
- return {html:sanitizeHtml(html,{allowedTags:sanitizeHtml.defaults.allowedTags.concat(['img']),allowedAttributes:{...sanitizeHtml.defaults.allowedAttributes,'*':['id'],figure:['class','data-photo'],figcaption:[],span:['class'],a:['href','rel','class','aria-label'],img:['src','srcset','sizes','width','height','alt','loading','decoding','fetchpriority']},transformTags:{a:(tag,attrs)=>({tagName:tag,attribs:{...attrs,href:registeredPhoto(attrs.href)?attrs.href:rewriteLink(attrs.href,file),rel:attrs.rel||'noopener noreferrer'}})}}),headings};
+ return {html:sanitizeHtml(html,{allowedTags:sanitizeHtml.defaults.allowedTags.concat(['img']),allowedAttributes:{...sanitizeHtml.defaults.allowedAttributes,'*':['id'],figure:['class','data-photo'],figcaption:[],span:['class','title'],a:['href','rel','class','aria-label'],img:['src','srcset','sizes','width','height','alt','loading','decoding','fetchpriority']},transformTags:{a:(tag,attrs)=>unavailableLink(attrs.href)?({tagName:'span',attribs:{class:'unavailable-link',title:'원문이 삭제되었거나 더 이상 제공되지 않습니다. 기존 기록은 보존했습니다.'}}):({tagName:tag,attribs:{...attrs,href:registeredPhoto(attrs.href)?attrs.href:rewriteLink(attrs.href,file),rel:attrs.rel||'noopener noreferrer'}})}}),headings};
 }
 const runs=documents.filter(d=>d.group==='news').map(d=>{
  const timestamp=d.markdown.match(/^- 실행:\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})?)/m)?.[1];

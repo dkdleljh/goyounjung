@@ -57,6 +57,22 @@ jobs:
         if: steps.revision.outputs.changed == 'true'
       - run: npm run check:links
         if: steps.revision.outputs.changed == 'true'
+      - name: Check browser behavior and photographs before publishing
+        if: steps.revision.outputs.changed == 'true'
+        run: |
+          npx playwright install --with-deps chromium
+          mkdir -p /tmp/archive-preview
+          ln -s "$PWD/dist" /tmp/archive-preview/goyounjung
+          python3 -m http.server 4321 --bind 127.0.0.1 --directory /tmp/archive-preview > /tmp/archive-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4321/goyounjung/ >/dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:browser
+          npm run test:work-photos
+          node scripts/check-freshness.mjs
       - uses: actions/upload-pages-artifact@v4
         if: steps.revision.outputs.changed == 'true'
         with:

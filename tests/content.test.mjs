@@ -60,3 +60,13 @@ test('editorial images retain source credit without inventing a CC license',()=>
 });
 
 test("unillustrated future work has a safe fallback",()=>{assert.equal(workPhoto({title:"아직 발표되지 않은 새 작품"}),undefined);});
+
+test('only confirmed missing sources lose their clickable link',async()=>{
+ const {unavailableLink}=await import('../src/lib/wiki.mjs');
+ const url='https://example.org/article';
+ assert.equal(unavailableLink(url,{[url]:{status:'bad',code:404}}),true);
+ assert.equal(unavailableLink(url,{[url]:{status:'bad',code:410}}),true);
+ assert.equal(unavailableLink(url,{[url]:{status:'warn',code:403}}),false);
+ assert.equal(unavailableLink(url,{[url]:{status:'warn',code:null}}),false);
+ assert.equal(unavailableLink(url,{}),false);
+});
